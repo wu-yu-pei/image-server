@@ -39,6 +39,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+router.get('/',(ctx:Context, next:Next) => {
+  ctx.body = 'image server is runimg at port 7777, url is https://api.image.wuyupei.top/{dir}/{filename}'
+})
+
 router.post('/upload-single/:dir', upload.single('image'), (ctx: Context, next: Next) => {
   const { filename } = ctx.file;
   const { dir } = ctx.params;
